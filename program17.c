@@ -1,36 +1,37 @@
 /*
- * Program to perform binary search on an array.
+ * Program to add two integer lists.
  */
 #include <stdio.h>
 
-int binarySearch(int arr[], int l, int r, int x) {
-    while (l <= r) {
-        int m = l + (r - l) / 2;
-
-        if (arr[m] == x)
-            return m;
-
-        if (arr[m] < x)
-            l = m + 1;
-        else
-            r = m - 1;
+void addLists(int list1[], int list2[], int result[], int size) {
+    for (int i = 0; i < size; i++) {
+        result[i] = list1[i] + list2[i];
     }
-
-    return -1;
 }
 
-void printResult(int result) {
-    if (result == -1)
-        printf("Element is not present in array\n");
-    else
-        printf("Element is present at index %d\n", result);
+void printList(int list[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", list[i]);
+    }
+    printf("\n");
 }
 
 int main() {
-    int arr[] = {2, 3, 4, 10, 40};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    int x = 10;
-    int result = binarySearch(arr, 0, n - 1, x);
-    printResult(result);
+    int list1[] = {1, 2, 3, 4, 5};
+    int list2[] = {6, 7, 8, 9, 10};
+    int size = sizeof(list1) / sizeof(list1[0]);
+    int result[size];
+
+    addLists(list1, list2, result, size);
+
+    printf("List 1: ");
+    printList(list1, size);
+
+    printf("List 2: ");
+    printList(list2, size);
+
+    printf("Resultant List: ");
+    printList(result, size);
+
     return 0;
 }

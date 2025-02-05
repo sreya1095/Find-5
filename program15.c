@@ -1,40 +1,35 @@
 /*
- * Program to implement a simple linked list.
+ * Program to reverse an integer array.
  */
 #include <stdio.h>
-#include <stdlib.h>
 
-struct Node {
-    int data;
-    struct Node* next;
-};
-
-void printList(struct Node* n) {
-    while (n != NULL) {
-        printf(" %d ", n->data);
-        n = n->next;
+void reverseArray(int arr[], int start, int end) {
+    while (start < end) {
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start++;
+        end--;
     }
 }
 
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+
 int main() {
-    struct Node* head = NULL;
-    struct Node* second = NULL;
-    struct Node* third = NULL;
+    int arr[] = {1, 2, 3, 4, 5, 6};
+    int n = sizeof(arr) / sizeof(arr[0]);
 
-    head = (struct Node*)malloc(sizeof(struct Node));
-    second = (struct Node*)malloc(sizeof(struct Node));
-    third = (struct Node*)malloc(sizeof(struct Node));
+    printf("Original array: \n");
+    printArray(arr, n);
 
-    head->data = 1;
-    head->next = second;
+    reverseArray(arr, 0, n - 1);
 
-    second->data = 2;
-    second->next = third;
-
-    third->data = 3;
-    third->next = NULL;
-
-    printList(head);
+    printf("Reversed array: \n");
+    printArray(arr, n);
 
     return 0;
 }

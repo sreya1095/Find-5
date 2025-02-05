@@ -1,54 +1,32 @@
 /*
- * Program to implement a binary search tree and perform post-order traversal.
+ * Program to display the multiplication of numbers using a normal integer list.
  */
 #include <stdio.h>
-#include <stdlib.h>
 
-struct Node {
-    int data;
-    struct Node* left;
-    struct Node* right;
-};
-
-struct Node* createNode(int data) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    newNode->data = data;
-    newNode->left = NULL;
-    newNode->right = NULL;
-    return newNode;
-}
-
-struct Node* insert(struct Node* node, int data) {
-    if (node == NULL) return createNode(data);
-
-    if (data < node->data)
-        node->left = insert(node->left, data);
-    else if (data > node->data)
-        node->right = insert(node->right, data);
-
-    return node;
-}
-
-void postOrder(struct Node* root) {
-    if (root != NULL) {
-        postOrder(root->left);
-        postOrder(root->right);
-        printf("%d \n", root->data);
+int multiplyList(int list[], int size) {
+    int result = 1;
+    for (int i = 0; i < size; i++) {
+        result *= list[i];
     }
+    return result;
+}
+
+void printList(int list[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", list[i]);
+    }
+    printf("\n");
 }
 
 int main() {
-    struct Node* root = NULL;
-    root = insert(root, 50);
-    insert(root, 30);
-    insert(root, 20);
-    insert(root, 40);
-    insert(root, 70);
-    insert(root, 60);
-    insert(root, 80);
+    int list[] = {1, 2, 3, 4, 5};
+    int size = sizeof(list) / sizeof(list[0]);
 
-    printf("Post-order traversal of the BST:\n");
-    postOrder(root);
+    printf("List: ");
+    printList(list, size);
+
+    int result = multiplyList(list, size);
+    printf("Multiplication of all elements: %d\n", result);
 
     return 0;
 }
