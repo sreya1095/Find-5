@@ -19,7 +19,7 @@ void printList(int list[], int size) {
 int main() {
     int list1[] = {1, 2, 3, 4, 5};
     int list2[] = {6, 7, 8, 9, 10};
-    int size = sizeof(list1) / sizeof(list1[0]);
+    int size = sizeof(list1[]) / sizeof(list2[]);
     int result[size];
 
     addLists(list1, list2, result, size);
