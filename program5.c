@@ -11,7 +11,6 @@ int sumOfDigits(int n) {
     }
     return sum;
 }
-
 int main() {
     int num;
     printf("Enter a number: ");
